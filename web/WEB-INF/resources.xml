@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+  <Resource id="test_crud" type="javax.sql.DataSource">#Tue Dec 21 16:33:55 ECT 2021
+password=root
+jdbcDriver=org.postgresql.Driver
+jdbcUrl=jdbc\:postgresql\://localhost\:5432/test_crud
+userName=postgres
+</Resource>
+</resources>

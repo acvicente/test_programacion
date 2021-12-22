@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DetalleFacturaEditDlg" widgetVar="DetalleFacturaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditDetalleFacturaTitle}">
+            <h:form id="DetalleFacturaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{detalleFacturaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditDetalleFacturaLabel_idDetalle}" for="idDetalle" />
+                        <p:inputText id="idDetalle" value="#{detalleFacturaController.selected.idDetalle}" title="#{bundle.EditDetalleFacturaTitle_idDetalle}" required="true" requiredMessage="#{bundle.EditDetalleFacturaRequiredMessage_idDetalle}"/>
+                        <p:outputLabel value="#{bundle.EditDetalleFacturaLabel_producto}" for="producto" />
+                        <p:inputText id="producto" value="#{detalleFacturaController.selected.producto}" title="#{bundle.EditDetalleFacturaTitle_producto}" required="true" requiredMessage="#{bundle.EditDetalleFacturaRequiredMessage_producto}"/>
+                        <p:outputLabel value="#{bundle.EditDetalleFacturaLabel_cantidad}" for="cantidad" />
+                        <p:inputText id="cantidad" value="#{detalleFacturaController.selected.cantidad}" title="#{bundle.EditDetalleFacturaTitle_cantidad}" required="true" requiredMessage="#{bundle.EditDetalleFacturaRequiredMessage_cantidad}"/>
+                        <p:outputLabel value="#{bundle.EditDetalleFacturaLabel_total}" for="total" />
+                        <p:inputText id="total" value="#{detalleFacturaController.selected.total}" title="#{bundle.EditDetalleFacturaTitle_total}" required="true" requiredMessage="#{bundle.EditDetalleFacturaRequiredMessage_total}"/>
+                        <p:outputLabel value="#{bundle.EditDetalleFacturaLabel_idFactura}" for="idFactura" />
+                        <p:inputText id="idFactura" value="#{detalleFacturaController.selected.idFactura}" title="#{bundle.EditDetalleFacturaTitle_idFactura}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{detalleFacturaController.update}" value="#{bundle.Save}" update="display,:DetalleFacturaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'DetalleFacturaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DetalleFacturaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
